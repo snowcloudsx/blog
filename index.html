@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>How to Make an OS</title>
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked@4.0.10/lib/marked.min.js"></script>
     <style>
         /* Global Styles */
         body {
@@ -128,11 +128,12 @@
         function loadMarkdown() {
             const markdownContainer = document.getElementById('markdown-area');
 
-            fetch('tutorial1.md')  // Replace 'example.md' with the path to your .md file
+            // Fetch the tutorial1.md file
+            fetch('tutorial1.md')  // Replace 'tutorial1.md' with the correct path to your .md file
                 .then(response => response.text())
                 .then(markdown => {
-                    // Convert markdown to HTML
-                    const htmlContent = marked(markdown);
+                    // Convert markdown to HTML using marked.js
+                    const htmlContent = marked.parse(markdown); // Use `marked.parse()` method to convert markdown
                     // Insert the HTML content into the markdown area
                     markdownContainer.innerHTML = htmlContent;
                 })
